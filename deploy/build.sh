@@ -11,4 +11,4 @@ rm -r main/.vitepress/dist
 git add -A &&
 git commit -m '更新' &&
 git push -u origin master &&
-ehco "更新成功"
+echo "更新成功"
