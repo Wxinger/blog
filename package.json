@@ -8,7 +8,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "docs:dev": "vitepress dev main",
     "docs:build": "vitepress build main",
-    "docs:preview": "vitepress preview main"
+    "docs:preview": "vitepress preview main",
+    "deploy": "sh deploy/build.sh"
   },
   "keywords": [],
   "author": "",
