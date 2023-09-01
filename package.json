@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "dev": "vitepress dev main",
+    "test:node": "node node/genarateList.js",
+    "dev": "node node/genarateList.js && vitepress dev main",
     "build": "vitepress build main",
     "preview": "vitepress preview main",
     "deploy": "sh build.sh"
