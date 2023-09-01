@@ -3,18 +3,18 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "docs:dev": "vitepress dev main",
-    "docs:build": "vitepress build main",
-    "docs:preview": "vitepress preview main",
-    "deploy": "sh deploy/build.sh"
+    "dev": "vitepress dev main",
+    "build": "vitepress build main",
+    "preview": "vitepress preview main",
+    "deploy": "sh build.sh"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@types/node": "^20.5.7",
     "vitepress": "1.0.0-rc.10"
   }
 }

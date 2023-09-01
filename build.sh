@@ -2,7 +2,7 @@
 set -e &&
 
 # 生成静态文件
-npm run docs:build &&
+npm run build &&
 rm -r docs/* &&
 cd main/.vitepress/dist &&
 mv * ../../../docs/

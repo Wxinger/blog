@@ -1,0 +1,1 @@
+import{_ as e,o as t,c as a}from"./chunks/framework.bcad29b4.js";const m=JSON.parse('{"title":"","description":"","frontmatter":{},"headers":[],"relativePath":"js/index.md","filePath":"js/index.md"}'),n={name:"js/index.md"};function s(r,o,c,d,i,p){return t(),a("div")}const f=e(n,[["render",s]]);export{m as __pageData,f as default};
