@@ -14,8 +14,8 @@ let list = ref([])
 
 onMounted(() => {
   const { site } = pageInfo
-  import(`${site.value.base}json/${props.type}.json`).then(res => {
-    list.value = res.default
+  fetch(`${site.value.base}json/${props.type}.json`).then(res => res.json()).then(res => {
+    list.value = res
   })
 })
 </script>
