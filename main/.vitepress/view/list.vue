@@ -1,32 +1,46 @@
 <script setup>
-import { onMounted, reactive } from "vue"
+import { onMounted, ref } from "vue"
 import { useData } from 'vitepress'
-// import { parsePath } from "./common"
 const pageInfo = useData()
 const props = defineProps({
-  root: {
+  type: {
     type: String,
-    default: "./article/"
+    default: ''
   }
 })
 
-let list = reactive([])
+let list = ref([])
 
 
 onMounted(() => {
-  // 获取当前根目录下的所有文件 组成列表隐射
-  // console.log(this)
-  // const _list = parsePath(props.root)
-  // this.list = _list
+  const { site } = pageInfo
+  import(`${site.value.base}json/${props.type}.json`).then(res => {
+    list.value = res.default
+  })
 })
 </script>
 
 <template>
   <div class="list">
-    列表
     <div v-for="(item, index) in list" :key="item.path" class="list-item">
-      {{ index }}、{{ item.title }}
+      <div class="title">
+        {{ item.title }} 
+      </div>
+      <div class="tag"></div>
     </div>
   </div>
 </template>
 
+<style scoped>
+.list {
+  margin-top: 20px;
+}
+
+.list .list-item {
+  border: 1px solid #ccc;
+  padding: 12px 9px 12px 18px;
+  border-radius: 12px;
+  margin-bottom: 6px;
+}
+
+</style>
