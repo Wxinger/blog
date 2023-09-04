@@ -5,12 +5,16 @@ export default defineConfig({
   title: "WISH",
   description: "My Blog",
   base: "/blog",
+  markdown: {
+    lineNumbers: true, //显示代码行数
+  },
+  lastUpdated: true, //以git提交的时间为更新时间
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
-      { text: '首页', link: '/' },
-      { text: '其他', link: '/markdown-examples' },
-      { text: '关于', link: '/markdown-examples' }
+      { text: '个人文章', link: '/' },
+      { text: '前端宝藏', link: '/markdown-examples' },
+      { text: '关于自己', link: '/markdown-examples' }
     ],
 
     sidebar: [
@@ -30,8 +34,7 @@ export default defineConfig({
     },
     i18nRouting: true,
     socialLinks: [
-      { icon: 'github', link: 'https://github.com/Wxinger/blog' },
-      { icon: "mdn", link: "https://developer.mozilla.org/zh-CN/"}
+      { icon: 'github', link: 'https://github.com/Wxinger/blog' }
     ],
   }
 })
