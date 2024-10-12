@@ -4,13 +4,13 @@
 
 <template>
   <div class="footer">
-    WangXin@2023·Blog
+    鑫@2024·Blog
   </div>
 </template>
 
 <style scoped>
 .footer {
-  margin-top: 24px;
+  margin-top: 12px;
   width: 72%;
   left: 14%;
   text-align: center;

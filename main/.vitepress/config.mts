@@ -36,6 +36,10 @@ export default defineConfig({
     socialLinks: [
       { icon: 'github', link: 'https://github.com/Wxinger/blog' }
     ],
+    userInfo: {
+      name: "王鑫",
+      avatar: './assets/'
+    }
   }
 })
 

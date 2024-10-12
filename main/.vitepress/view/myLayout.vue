@@ -14,13 +14,10 @@ const back = () => {
       title
     </template>
     <template #doc-after>
-      <div>
-        <button @click="back">cd ··</button>
-      </div>
-      back????
+      
     </template>
     <template #home-hero-before>
-     <Home />
+      <Home />
     </template>
     <template #home-features-after>
       <Footer />

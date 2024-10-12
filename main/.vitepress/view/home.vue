@@ -1,17 +1,17 @@
 <script setup>
 import list from "./list.vue"
 import { useData } from 'vitepress'
-console.log(useData())
-const { frontmatter } = useData()
+const { frontmatter, theme } = useData()
+console.log(theme)
 </script>
 
 <template>
   <div class="home">
     <div class="slide-view">
       <div class="user-info">
-        <img class="avator" :src="frontmatter.info.avator" alt="头像" />
-        <div class="name">{{frontmatter.info.name}}</div>
-        <div class="motto">🛞{{ frontmatter.info.motto }}</div>
+        <img class="avatar" :src="frontmatter.info.avatar" alt="头像" />
+        <div class="name">{{ frontmatter.info.name }}</div>
+        <div class="motto">{{ frontmatter.info.motto }}</div>
       </div>
       <div class="panel">
         <div class="panel-item">✍️ 312</div>
@@ -43,7 +43,7 @@ const { frontmatter } = useData()
   text-align: center;
 }
 
-.slide-view .avator {
+.slide-view .avatar {
   width: 64px;
   height: 64px;
   border: 1px solid #ccc;
