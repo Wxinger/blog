@@ -7,20 +7,4 @@ info:
   name: 鑫
   text: 我的心愿博客屋
   motto: 曾经沧海难为水，除缺巫山不是云
-  avatar: './bg.png'
-  features:
-    - title: Vue
-      details: Vue源码解读 | Element框架使用注意点 | 项目开发难点 | 面试题
-      link: /vue/index
-    - title: React
-      details: React源码解读 | Antd框架使用注意点 | 项目开发难点 | 面试题
-      link: /react/index
-    - title: JavaScript
-      details: ES6知识点 | Jquery知识点 | 项目开发难点 | 面试题
-      link: /js/index
-    - title: HTML
-      details: 语义化的知识点
-      link: 'html/index'
-    - title: CSS
-      details: 语义化的知识点
-      link: 'css/index'
+  description: 什么都写，什么都不写，什么都写一点，但写的啥都不是！

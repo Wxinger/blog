@@ -15,7 +15,6 @@ onMounted(() => {
   const { site } = pageInfo
   fetch(`${site.value.base}json/${props.type}.json`).then(res => res.json()).then(res => {
     list.value = res
-    console.log(res);
   })
 })
 </script>
@@ -23,16 +22,18 @@ onMounted(() => {
 <template>
   <div class="list">
     <div v-for="item in list" :key="item.path" class="list-item">
-      <div class="title">
-        {{ item.title }} 
-        <span>{{ item.author }}</span>
-      </div>
-      <div class="tag-view">
-        <span class="tag" v-for="tag in item.tag" :key="tag">{{ tag }}</span>
-      </div>
-      <div class="introduction">
-        {{ item.introduction }}
-      </div>
+      <a :href="item.link" class="text-view">
+        <div class="title">
+          {{ item.title }} 
+          <span class="author">{{ item.author }}</span>
+        </div>
+        <div class="tag-view">
+          <span class="tag" v-for="tag in item.tag" :key="tag">{{ tag }}</span>
+        </div>
+        <div class="introduction">
+          {{ item.introduction }}
+        </div>
+      </a>
     </div>
   </div>
 </template>
@@ -46,18 +47,36 @@ onMounted(() => {
 
 .list .list-item {
   border: 1px solid #ccc;
-  padding: 12px 9px 12px 18px;
+  padding: 6px 9px 12px 18px;
   border-radius: 12px;
   margin: 6px;
-  flex-basis: calc(50% - 24px);
+  flex-basis: 100%;
   margin: 12px;
-  height: 240px;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.list .text-view {
+  text-decoration: none;
+}
+
+.list .list-item:hover {
+  border: 1px solid #e18a3b;
 }
 
 .list-item .title {
   font-weight: 600;
   color: #212121;
   line-height: 44px   ;
+}
+
+.list-item .title .author {
+  margin-left: 4px;
+  font-size: 12px;
+  background-color: #ccc;
+  padding: 2px 12px;
+  border-radius: 12px;
+  color: #484848;
 }
 
 .list-item .tag-view .tag {

@@ -1,17 +1,15 @@
 <script lang="ts" setup>
 import DefaultTheme from "vitepress/theme";
-import Home from "./home.vue";
+import Home from "./home.vue"
 import Footer from "./footer.vue"
 const { Layout } = DefaultTheme;
-const back = () => {
-  history.back();
-};
+
 </script>
 
 <template>
-  <Layout>
+  <Layout class="custom-layout">
     <template #doc-before>
-      title
+     
     </template>
     <template #doc-after>
       
@@ -23,10 +21,9 @@ const back = () => {
       <Footer />
     </template>
   </Layout>
-  <!-- copywright -->
 </template>
 
-<style >
+<style scoped>
 button {
   display: inline-block;
   position: relative;
@@ -53,4 +50,9 @@ button:hover::after {
   transform: scaleX(1);
   transform-origin: bottom left;
 }
+
+.custom-layout {
+  background-size: 100% 100%;
+}
+
 </style>
