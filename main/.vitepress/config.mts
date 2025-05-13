@@ -11,8 +11,8 @@ export default defineConfig({
   lastUpdated: true, //以git提交的时间为更新时间
   themeConfig: {
     nav: [
-      { text: '个人文章', link: '/' },
       { text: '前端宝藏', link: '/' },
+      { text: '个人文章', link: '/common/index' },
       { text: '心愿杂谈', link: '/common/index' }
     ],
 

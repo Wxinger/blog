@@ -27,11 +27,9 @@ function getFileRoot() {
               let s = re.exec(content)
               re.lastIndex = 0
               if (s) {
-                //console.log(s)
                 let docs = yaml.load(s[1])
                 docs.link = tempPath.slice(4, -3)
                 store[module].push(docs)
-                //genarateFile(docs, module);
               }
             }
           } catch(e) {

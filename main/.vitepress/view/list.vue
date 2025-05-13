@@ -25,13 +25,15 @@ onMounted(() => {
       <a :href="item.link" class="text-view">
         <div class="title">
           {{ item.title }} 
-          <span class="author">{{ item.author }}</span>
         </div>
         <div class="tag-view">
           <span class="tag" v-for="tag in item.tag" :key="tag">{{ tag }}</span>
         </div>
         <div class="introduction">
           {{ item.introduction }}
+        </div>
+        <div class="description">
+
         </div>
       </a>
     </div>

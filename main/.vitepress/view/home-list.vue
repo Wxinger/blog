@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
 import { useData } from 'vitepress'
 import htmlSvg from "../assets/html.svg"
 import cssSvg from "../assets/css.svg"
@@ -8,6 +8,7 @@ import vueSvg from "../assets/vue.svg"
 import reactSvg from "../assets/react.svg"
 import otherSvg from "../assets/other.svg"
 const { frontmatter } = useData()
+
 const props = defineProps({
   type: {
     type: String,
@@ -54,11 +55,28 @@ let list = ref([
   }
 ])
 
+const currentTheme = ref('dark')
+
+onMounted(() => {
+
+  const observer = new MutationObserver((mutations) => {
+    mutations.forEach((mutation) => {
+      if (mutation.attributeName === 'class') {
+        const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
+        currentTheme.value = theme
+      }
+    })
+  })
+  observer.observe(document.documentElement, {
+    attributes: true
+  })
+})
+
 </script>
 
 <template>
   <div class="list">
-    <div v-for="item in list" :key="item.path" class="list-item">
+    <div v-for="item in list" :key="item.path" :class="'list-item ' + currentTheme">
       <div class="list-item" @click="searchArticle(item.link)">
         <div class="title-wrap">
           <div class="icon">
@@ -96,9 +114,16 @@ let list = ref([
   border-radius: 12px;
   margin: 6px;
   margin: 12px;
-  background-color: rgba(240, 248, 255, 0.80);
   cursor: pointer;
   min-width: calc(25% - 24px);
+}
+
+.list-item.light {
+  background-color: rgba(240, 248, 255, 0.80);
+}
+
+.list-item.dark {
+  background-color: rgba(0, 0, 0, 0.80);
 }
 
 .list-item .title-wrap {
@@ -108,9 +133,16 @@ let list = ref([
 
 .list-item .title {
   font-weight: 600;
-  color: #212121;
   line-height: 44px;
   margin-left: 12px;
+}
+
+.list-item .title.light {
+  color: #212121;
+}
+
+.list-item .title.dark {
+  color: #fff;
 }
 
 .list-item .description {
