@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted } from 'vue'
+import { ref, onMounted, onBeforeUnmount } from 'vue'
 import { useData } from 'vitepress'
 import htmlSvg from "../assets/html.svg"
 import cssSvg from "../assets/css.svg"
@@ -57,9 +57,15 @@ let list = ref([
 
 const currentTheme = ref('dark')
 
+let observer
 onMounted(() => {
-
-  const observer = new MutationObserver((mutations) => {
+console.log(frontmatter.value.theme)
+  if (frontmatter.value.theme === 'dark') {
+    currentTheme.value = 'dark'
+  } else {
+    currentTheme.value = 'light'
+  }
+  observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.attributeName === 'class') {
         const theme = document.documentElement.classList.contains('dark') ? 'dark' : 'light'
@@ -70,6 +76,12 @@ onMounted(() => {
   observer.observe(document.documentElement, {
     attributes: true
   })
+})
+
+onBeforeUnmount(() => {
+  if (observer instanceof MutationObserver) {
+    observer.disconnect()
+  }
 })
 
 </script>

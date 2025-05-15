@@ -10,6 +10,7 @@ const props = defineProps({
 })
 
 let list = ref([])
+const currentTheme = ref('dark')
 
 onMounted(() => {
   const { site } = pageInfo
@@ -68,7 +69,7 @@ onMounted(() => {
 
 .list-item .title {
   font-weight: 600;
-  color: #212121;
+  color: #e0e0d0;
   line-height: 44px   ;
 }
 
@@ -78,7 +79,7 @@ onMounted(() => {
   background-color: #ccc;
   padding: 2px 12px;
   border-radius: 12px;
-  color: #484848;
+  color: #e0e0d0;
 }
 
 .list-item .tag-view .tag {
