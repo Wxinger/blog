@@ -22,7 +22,7 @@ export default defineConfig({
       {
         text: '导航',
         items: [
-          { text: 'HTML', link: '/markdown-examples' },
+          { text: 'HTML', link: '/html/index' },
           { text: 'CSS', link: '/css/index' },
           { text: 'JavaScript', link: '/js/index' },
           { text: 'Vue', link: '/vue/index' },

@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onMounted, onBeforeUnmount } from 'vue'
+import { ref, onMounted, onBeforeUnmount, watch } from 'vue'
 import { useData } from 'vitepress'
 import htmlSvg from "../assets/html.svg"
 import cssSvg from "../assets/css.svg"
@@ -59,12 +59,7 @@ const currentTheme = ref('dark')
 
 let observer
 onMounted(() => {
-console.log(frontmatter.value.theme)
-  if (frontmatter.value.theme === 'dark') {
-    currentTheme.value = 'dark'
-  } else {
-    currentTheme.value = 'light'
-  }
+  currentTheme.value = document.documentElement.classList.contains('dark') ? 'dark' : 'light' 
   observer = new MutationObserver((mutations) => {
     mutations.forEach((mutation) => {
       if (mutation.attributeName === 'class') {
@@ -73,10 +68,15 @@ console.log(frontmatter.value.theme)
       }
     })
   })
+
   observer.observe(document.documentElement, {
     attributes: true
   })
 })
+
+watch(() => currentTheme, (newVal) => {
+  frontmatter.value.theme = newVal
+}, { immediate: true })
 
 onBeforeUnmount(() => {
   if (observer instanceof MutationObserver) {
@@ -89,7 +89,7 @@ onBeforeUnmount(() => {
 <template>
   <div class="list">
     <div v-for="item in list" :key="item.path" :class="'list-item ' + currentTheme">
-      <div class="list-item" @click="searchArticle(item.link)">
+      <div class="list-item">
         <div class="title-wrap">
           <div class="icon">
             <img :src="item.icon" alt="icon">
